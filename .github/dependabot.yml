@@ -3,6 +3,11 @@
 
 version: 2
 updates:
+  - package-ecosystem: npm
+    schedule:
+      interval: daily
+    directory: test/sample
+    open-pull-requests-limit: 10
   - package-ecosystem: docker
     schedule:
       interval: daily
@@ -22,9 +27,4 @@ updates:
     schedule:
       interval: daily
     directory: .batect/yapf
-    open-pull-requests-limit: 10
-  - package-ecosystem: gomod
-    schedule:
-      interval: daily
-    directory: test/sample
     open-pull-requests-limit: 10
