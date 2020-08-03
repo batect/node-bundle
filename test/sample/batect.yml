@@ -1,0 +1,9 @@
+tasks:
+  run:
+    description: Run the sample application
+    run:
+      container: node-build-env
+      command: yarn start
+
+include:
+  - ../../batect-bundle.yml

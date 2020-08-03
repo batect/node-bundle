@@ -1,0 +1,12 @@
+*                text=auto
+
+*.editorconfig   text       eol=lf
+*.md             text       eol=lf
+*.yml            text       eol=lf
+batect           text       eol=lf
+LICENSE          text       eol=lf
+
+*.cmd            text       eol=crlf
+
+*.gitignore      text=auto
+*.gitattributes  text=auto

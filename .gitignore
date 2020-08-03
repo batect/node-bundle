@@ -1,0 +1,4 @@
+**/.batect/caches/
+.idea/
+build/
+**/node_modules/

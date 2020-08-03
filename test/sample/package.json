@@ -1,0 +1,12 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "Sample app for node-bundle",
+  "main": "index.js",
+  "repository": "https://github.com/batect/node-bundle",
+  "author": "Charles Korn",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
