@@ -1,82 +1,12 @@
-containers:
-  yamllint:
-    build_directory: .batect/yamllint
-    volumes:
-      - local: .
-        container: /code
-        options: ro
-    working_directory: /code
-
-  test-env:
-    build_directory: .batect/test-env
-    volumes:
-      - local: .
-        container: /code
-        options: cached
-    working_directory: /code
-    privileged: true
-
-  hadolint:
-    image: hadolint/hadolint:v1.18.0
-    volumes:
-      - local: .
-        container: /code
-        options: ro
-    working_directory: /code
-
-  shellcheck:
-    build_directory: .batect/shellcheck
-    volumes:
-      - local: .
-        container: /code
-        options: ro
-    working_directory: /code
-
-  shfmt:
-    image: mvdan/shfmt:v3.1.2
-    volumes:
-      - local: .
-        container: /code
-        options: ro
-    working_directory: /code
-
-  yapf:
-    build_directory: .batect/yapf
-    volumes:
-      - local: .
-        container: /code
-        options: ro
-    working_directory: /code
-
 tasks:
   check-format:
     description: Run all formatting check tasks.
     group: Formatting check tasks
     prerequisites:
+      - check-format:editorconfig-compliance
       - check-format:python
       - check-format:shell
       - check-format:yaml
-
-  check-format:shell:
-    description: Check formatting of shell scripts.
-    group: Formatting check tasks
-    run:
-      container: shfmt
-      command: -d .
-
-  check-format:yaml:
-    description: Check formatting of all YAML files.
-    group: Formatting check tasks
-    run:
-      container: yamllint
-      command: yamllint .
-
-  check-format:python:
-    description: Check formatting of Python code.
-    group: Formatting check tasks
-    run:
-      container: yapf
-      command: yapf --diff --recursive .
 
   lint:
     description: Run all linting tasks.
@@ -85,23 +15,7 @@ tasks:
       - lint:docker
       - lint:shell
 
-  lint:docker:
-    description: Lint Dockerfiles.
-    group: Linting tasks
-    run:
-      container: hadolint
-      command: sh -c "hadolint $(find . -name Dockerfile)"
-
-  lint:shell:
-    description: Lint shell scripts.
-    group: Linting tasks
-    run:
-      container: shellcheck
-      command: sh -c "shellcheck $(find . -name '*.sh')"
-
-  test:
-    description: Run the tests.
-    group: Testing tasks
-    run:
-      container: test-env
-      command: python3 test/tests.py
+include:
+  - type: git
+    repo: https://github.com/batect/bundle-dev-bundle.git
+    ref: 0.2.0
