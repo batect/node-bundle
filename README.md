@@ -43,6 +43,8 @@ include:
     ref: XXX # Replace with latest version from https://github.com/batect/node-bundle/releases
 ```
 
+The [TypeScript sample project](https://github.com/batect/batect-sample-typescript) also demonstrates how to use this bundle.
+
 ## Development
 
 Run `./batect --list-tasks` to see a list of available tasks for this project.
