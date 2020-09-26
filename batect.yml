@@ -3,17 +3,13 @@ tasks:
     description: Run all formatting check tasks.
     group: Formatting check tasks
     prerequisites:
-      - check-format:editorconfig-compliance
-      - check-format:python
-      - check-format:shell
-      - check-format:yaml
+      - check-format:*
 
   lint:
     description: Run all linting tasks.
     group: Linting tasks
     prerequisites:
-      - lint:docker
-      - lint:shell
+      - lint:*
 
 include:
   - type: git
