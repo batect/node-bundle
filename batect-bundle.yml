@@ -8,6 +8,9 @@ containers:
       - type: cache
         name: node_modules
         container: /code/node_modules
+      - type: cache
+        name: yarn_cache
+        container: /home/container-user/.cache/yarn
     working_directory: /code
     enable_init_process: true
     run_as_current_user:
