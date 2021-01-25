@@ -1,6 +1,6 @@
 # node-bundle
 
-[![Build Status](https://img.shields.io/github/workflow/status/batect/node-bundle/Pipeline/master)](https://github.com/batect/node-bundle/actions?query=workflow%3APipeline+branch%3Amaster)
+[![Build Status](https://img.shields.io/github/workflow/status/batect/node-bundle/Pipeline/main)](https://github.com/batect/node-bundle/actions?query=workflow%3APipeline+branch%3Amain)
 [![License](https://img.shields.io/github/license/batect/node-bundle.svg)](https://opensource.org/licenses/Apache-2.0)
 
 A bundle for [Batect](https://batect.dev) that provides a development container for Node.js, with sensible default configuration.
