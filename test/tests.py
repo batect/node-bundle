@@ -4,6 +4,7 @@ import unittest
 
 
 class TestHelloWorldBundle(unittest.TestCase):
+
     def test_hello_world(self):
         result = self.run_batect('run')
 
