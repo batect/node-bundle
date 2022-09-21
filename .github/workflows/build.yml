@@ -1,6 +1,10 @@
 name: Pipeline
 
-on: [push]
+on: [push, pull_request]
+
+env:
+  TERM: xterm-256color
+  BATECT_ENABLE_TELEMETRY: true
 
 jobs:
   build:
@@ -30,3 +34,28 @@ jobs:
 
       - name: Test bundle
         run: ./batect test
+
+  release:
+    name: "Release"
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'batect/node-bundle'
+    needs:
+      - build
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.0.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3.4.1
+        with:
+          node-version: 16
+
+      - name: Create release
+        run: npx --package conventional-changelog-conventionalcommits@5.0.0 --package semantic-release@19.0.5 semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
