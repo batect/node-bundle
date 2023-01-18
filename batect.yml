@@ -14,4 +14,4 @@ tasks:
 include:
   - type: git
     repo: https://github.com/batect/bundle-dev-bundle.git
-    ref: 0.83.0
+    ref: 0.85.0
