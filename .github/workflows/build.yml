@@ -56,6 +56,6 @@ jobs:
           node-version: 18
 
       - name: Create release
-        run: npx --package conventional-changelog-conventionalcommits@7.0.0 --package semantic-release@21.1.1 semantic-release
+        run: npx --package conventional-changelog-conventionalcommits@7.0.1 --package semantic-release@21.1.1 semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
